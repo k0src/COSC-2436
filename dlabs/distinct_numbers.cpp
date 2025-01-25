@@ -1,30 +1,20 @@
 #include <iostream>
 #include <unordered_set>
-#include <fstream>
-#include "ArgumentManager.h"
 
 int main(int argc, char* argv[])
 {
-    ArgumentManager am(argc, argv);
-    const std::string input = am.get("input");
-    const std::string output = am.get("output");
-
-    ifstream file(input);
-    ofstream ofile(output);
-
     int n;
-    file >> n;
+    std::cin >> n;
 
     std::unordered_set<int> nums;
+
     for (int i = 0; i < n; i++) {
         int num;
-        file >> num;
+        std::cin >> num;
         nums.insert(num);
     }
 
-    ofile << nums.size();
-
-    file.close();
+    std::cout << nums.size();
 
     return 0;
 }

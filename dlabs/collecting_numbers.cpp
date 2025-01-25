@@ -1,24 +1,15 @@
 #include <iostream>
-#include <fstream>
 #include <vector>
-#include "ArgumentManager.h"
 
 int main(int argc, char* argv[])
 {
-    ArgumentManager am(argc, argv);
-    const std::string input = am.get("input");
-    const std::string output = am.get("output");
-
-    ifstream file(input);
-    ofstream ofile(output);
-
     int size;
-    file >> size;
+    std::cin >> size;
 
     std::vector<int> in;
     for (int i = 0; i < size; i++) {
         int num;
-        file >> num;
+        std::cin >> num;
         in.push_back(num);
     }
 
@@ -34,8 +25,7 @@ int main(int argc, char* argv[])
         }
     }
 
-    ofile << rounds;
-    file.close();
+    std::cout << rounds;
 
     return 0;
 }
