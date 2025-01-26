@@ -1,0 +1,26 @@
+Q1:
+
+Explain Linked Lists:
+- How are Linked Lists arranged in memory?
+- What are some advantages/disadvantages of Linked Lists?
+- How are Linked Lists implemented? (structure)
+- Explain some common Linked List functions?
+
+Q2:
+
+Toys on a conveyor belt, each toy connected to the next toy with a string (pointer)
+Within the belt, there are defective toys, at positions a and b. There is a conveyor belt next to you which you can combine your belt to replace the defective toys
+
+Design a program to:
+1. Add toys at the end (tail)
+2. Print the toy at the beginning of the original belt
+3. Design a function that can:
+	a. Given the integers a and b indicating indices of the beginning and the end of the *defective* toys, remove the defective toys from the belt by replacing them with the toys
+	   from the belt next to you.
+    b. Return/re-assign the new head pointer. void func(head1, a, b, head2)
+4. Cannot use a global size variable
+5. The line of toys on the belt is represented as a linked list
+6. The toys are the nodes, and the string is the next pointer.
+7. Don't forget to account for edge cases!
+
+Nodes will have fields for name (string), price (int), and next pointer (Node*).
