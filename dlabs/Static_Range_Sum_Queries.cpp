@@ -1,20 +1,25 @@
-#include <iostream>
+#include <cstdio>
 #include <vector>
 
-int main()
-{
-	int n = 8, q = 4;
-	std::vector<int> values = {3, 2, 4, 5, 1, 1, 5, 3};
+int main() {
+    int n, q;
+    scanf("%d %d", &n, &q);
 
-	int a = 5, b = 6;
+    std::vector<long long> nums(n + 1, 0);
 
-	int sum = 0;
+    for (int i = 1; i <= n; i++) {
+        int x;
+        scanf("%d", &x);
+        nums[i] = nums[i - 1] + x; 
+    }
 
-	for (int i = a - 1; i < b; ++i) {
-		sum += values[i];
-	}
+    for (int i = 0; i < q; i++) {
+        int a, b;
+        scanf("%d %d", &a, &b);
 
-	std::cout << sum;
+        long long sum = nums[b] - nums[a - 1];
+        printf("%lld\n", sum);
+    }
 
-	return 0;
+    return 0;
 }
