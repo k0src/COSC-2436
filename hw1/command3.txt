@@ -1,2 +1,0 @@
-Remove (number of drinks: 7)
-Sort (deposit)
