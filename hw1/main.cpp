@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include "ArgumentManager.h"
 #include "LinkedList.h"
 #include <fstream>
@@ -17,7 +15,7 @@ int main(int argc, char* argv[])
 
     LinkedList list;
 
-    list.parseFile(inFile);
+    list.parseInputFile(inFile);
     list.parseCommandFile(commandFile);
     list.printToFile(outFile);
 

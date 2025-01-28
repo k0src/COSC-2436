@@ -5,18 +5,6 @@ LinkedList::~LinkedList() {
     clear();
 }
 
-void LinkedList::parseFile(std::ifstream& inFile) {
-    std::string line;
-    std::getline(inFile, line);
-    if (line.find("Add") != std::string::npos || line.find("Remove") != std::string::npos || line.find("Sort") != std::string::npos) {
-        inFile.seekg(0);
-        parseCommandFile(inFile);
-    } else {
-        inFile.seekg(0);
-        parseInputFile(inFile);
-    }
-}
-
 void LinkedList::parseInputFile(std::ifstream& inFile) {
     std::string line;
     while (getline(inFile, line)) {
@@ -65,7 +53,15 @@ void LinkedList::parseCommandFile(std::ifstream& inFile) {
                 removeByDeposit(deposit);
             }
         } else if (line.find("Sort") != std::string::npos) {
-            // sort
+            if (line.find("number of drinks") != std::string::npos) {
+                sortByNdrinks();
+            } else if (line.find("deposit") != std::string::npos) {
+                sortByDeposit();
+            } else if (line.find("name") != std::string::npos) {
+                sortByName();
+            } else if (line.find("age") != std::string::npos) {
+                sortByAge();
+            }
         }
     }
 }
@@ -181,6 +177,74 @@ void LinkedList::removeByNdrinks(int n_drinks) {
     }
 }
 
+void LinkedList::sortByName() {
+    if (!head || !head->next) return;
+    
+    bool swapped;
+    do {
+        swapped = false;
+        Node* current = head;
+        while (current->next) {
+            if (current->name > current->next->name) {
+                std::swap(current->name, current->next->name);
+                swapped = true;
+            }
+            current = current->next;
+        }
+    } while (swapped);
+}
+
+void LinkedList::sortByAge() {
+    if (!head || !head->next) return;
+
+    bool swapped;
+    do {
+        swapped = false;
+        Node* current = head;
+        while (current->next) {
+            if (current->age > current->next->age) {
+                std::swap(current->age, current->next->age);
+                swapped = true;
+            }
+            current = current->next;
+        }
+    } while (swapped);
+}
+
+void LinkedList::sortByDeposit() {
+    if (!head || !head->next) return;
+
+    bool swapped;
+    do {
+        swapped = false;
+        Node* current = head;
+        while (current->next) {
+            if (current->deposit > current->next->deposit) {
+                std::swap(current->deposit, current->next->deposit);
+                swapped = true;
+            }
+            current = current->next;
+        }
+    } while (swapped);
+}
+
+void LinkedList::sortByNdrinks() {
+    if (!head || !head->next) return;
+
+    bool swapped;
+    do {
+        swapped = false;
+        Node* current = head;
+        while (current->next) {
+            if (current->n_drinks > current->next->n_drinks) {
+                std::swap(current->n_drinks, current->next->n_drinks);
+                swapped = true;
+            }
+            current = current->next;
+        }
+    } while (swapped);
+}
+
 int LinkedList::size() const {
     return _size;
 }
@@ -218,7 +282,10 @@ Node* LinkedList::find(const std::string& name, int age) {
 void LinkedList::printToFile(std::ofstream& outFile) {
     Node* current = head;
     while (current) {
-        outFile << "[name: " << current->name << "; age: " << current->age << "; deposit: " << current->deposit << "; number of drinks: " << current->n_drinks << "]" << std::endl;
+        outFile << "[name: " << current->name << "; age: " << current->age << "; deposit: " << current->deposit << "; number of drinks: " << current->n_drinks << "]";
+        if (current->next) { 
+            outFile << std::endl;
+        }
         current = current->next;
     }
 }
