@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include <iostream>
 
 LinkedList::LinkedList() : head(nullptr), tail(nullptr) {}
 LinkedList::~LinkedList() {
@@ -179,17 +180,32 @@ void LinkedList::removeByNdrinks(int n_drinks) {
 
 void LinkedList::sortByName() {
     if (!head || !head->next) return;
-    
+
     bool swapped;
     do {
         swapped = false;
         Node* current = head;
+        Node* prev = nullptr;
+
         while (current->next) {
             if (current->name > current->next->name) {
-                std::swap(current->name, current->next->name);
                 swapped = true;
+
+                Node* temp = current->next;
+                current->next = temp->next;
+                temp->next = current;
+
+                if (prev) {
+                    prev->next = temp;
+                } else {
+                    head = temp;
+                }
+
+                prev = temp;
+            } else {
+                prev = current;
+                current = current->next;
             }
-            current = current->next;
         }
     } while (swapped);
 }
@@ -201,12 +217,27 @@ void LinkedList::sortByAge() {
     do {
         swapped = false;
         Node* current = head;
+        Node* prev = nullptr;
+
         while (current->next) {
             if (current->age > current->next->age) {
-                std::swap(current->age, current->next->age);
                 swapped = true;
+
+                Node* temp = current->next;
+                current->next = temp->next;
+                temp->next = current;
+
+                if (prev) {
+                    prev->next = temp;
+                } else {
+                    head = temp;
+                }
+
+                prev = temp;
+            } else {
+                prev = current;
+                current = current->next;
             }
-            current = current->next;
         }
     } while (swapped);
 }
@@ -218,15 +249,31 @@ void LinkedList::sortByDeposit() {
     do {
         swapped = false;
         Node* current = head;
+        Node* prev = nullptr;
+
         while (current->next) {
             if (current->deposit > current->next->deposit) {
-                std::swap(current->deposit, current->next->deposit);
                 swapped = true;
+
+                Node* temp = current->next;
+                current->next = temp->next;
+                temp->next = current;
+
+                if (prev) {
+                    prev->next = temp;
+                } else {
+                    head = temp;
+                }
+
+                prev = temp;
+            } else {
+                prev = current;
+                current = current->next;
             }
-            current = current->next;
         }
     } while (swapped);
 }
+
 
 void LinkedList::sortByNdrinks() {
     if (!head || !head->next) return;
@@ -235,12 +282,27 @@ void LinkedList::sortByNdrinks() {
     do {
         swapped = false;
         Node* current = head;
+        Node* prev = nullptr;
+
         while (current->next) {
             if (current->n_drinks > current->next->n_drinks) {
-                std::swap(current->n_drinks, current->next->n_drinks);
                 swapped = true;
+
+                Node* temp = current->next;
+                current->next = temp->next;
+                temp->next = current;
+
+                if (prev) {
+                    prev->next = temp;
+                } else {
+                    head = temp;
+                }
+
+                prev = temp;
+            } else {
+                prev = current;
+                current = current->next;
             }
-            current = current->next;
         }
     } while (swapped);
 }
@@ -282,10 +344,7 @@ Node* LinkedList::find(const std::string& name, int age) {
 void LinkedList::printToFile(std::ofstream& outFile) {
     Node* current = head;
     while (current) {
-        outFile << "[name: " << current->name << "; age: " << current->age << "; deposit: " << current->deposit << "; number of drinks: " << current->n_drinks << "]";
-        if (current->next) { 
-            outFile << std::endl;
-        }
+        outFile << "[name: " << current->name << "; age: " << current->age << "; deposit: " << current->deposit << "; number of drinks: " << current->n_drinks << "]" << std::endl;
         current = current->next;
     }
 }
