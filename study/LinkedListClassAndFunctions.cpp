@@ -1,6 +1,8 @@
 #include <iostream>
 #include <stdexcept>
 
+// Node Class
+
 class Node {
 public:
 	Node(int value) : value(value), next(nullptr) {}
@@ -12,8 +14,12 @@ private:
 	friend class LinkedList;
 };
 
+// Linked List Class
+
 class LinkedList {
 public:
+	// Essential Functions (MUST KNOW!)
+
 	LinkedList() : head(nullptr), tail(nullptr) {}
 
 	void addFirst(int value) {
@@ -255,7 +261,6 @@ public:
 			current = current->next;
 		}
 	}
- 
 private:
 	Node* head;
 	Node* tail;
@@ -265,15 +270,19 @@ private:
 int main()
 {
 	LinkedList l;
-	l.addFirst(10);
-	l.addFirst(23);
-	l.addLast(4);
-	l.addFirst(5);
-	l.addLast(16);
-	l.addFirst(5);
+	l.addLast(1);
+	l.addLast(3);
+	l.addLast(5);
 
-	l.sort();
+	LinkedList k;
+
+	k.addLast(2);
+	k.addLast(4);
+	k.addLast(6);
+
+	l.mergeLists(k);
 
 	l.print();
+
 	return 0;
 }
