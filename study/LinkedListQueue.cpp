@@ -36,6 +36,7 @@ struct LinkedListQueue {
 		}
 
 		delete current;
+		_size--;
 	}
 
 	char front() const {
@@ -50,6 +51,10 @@ struct LinkedListQueue {
 	int size() const {
 		return _size;
 	}
+
+	bool empty() const {
+        return _size == 0;
+    }
 
 	Node* head;
 	Node* tail;
@@ -68,10 +73,10 @@ int main()
 	q.enqueue('e');
 
 	// Dequeue and print elements
-	for (int i = 0; i < q.size(); i++) {
-		std::cout << q.front() << std::endl;
-		q.dequeue();
-	}
+	while (!q.empty()) {
+        std::cout << q.front() << std::endl;
+        q.dequeue();
+    }
 
 	return 0;
 }
