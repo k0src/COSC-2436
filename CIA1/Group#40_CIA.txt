@@ -1,0 +1,192 @@
+1. What is the worst-case time complexity of accessing an element in a dynamic array?  
+a) O(n)  
+b) O(log n)  
+*c) O(1)
+d) O(n log n)
+
+2. True or False: The best-case time complexity of bubble sort is O(n).  
+*a) True  
+b) False  
+
+3. Which of the following searching algorithms requires a sorted array to work correctly?  
+a) Linear Search  
+*b) Binary Search  
+
+4. What happens when a recursive function lacks a base case?  
+a) It runs infinitely and may cause a stack overflow.  
+*b) It causes a segmentation fault or stack overflow error.  
+c) It runs normally with extra computations.  
+d) It converts itself into an iterative function automatically.
+
+5. In a doubly linked list, how many pointers does each node store?  
+a) 1  
+*b) 2  
+c) 3  
+d) 4
+
+6. What is the time complexity of inserting an element at the end of a dynamic array (assuming no resizing is needed)?  
+a) O(n)  
+b) O(log n)  
+*c) O(1)  
+d) O(n^2)
+
+7. True or False: A recursive function must always have a base case to prevent infinite recursion.  
+*a) True  
+b) False
+
+8. Which of the following sorting algorithms has an average-case time complexity of O(n log n)?  
+a) Bubble Sort  
+b) Insertion Sort
+*c) Merge Sort  
+d) Selection Sort
+
+9. True or False: Selection sort and insertion sort both have a worst-case time complexity of O(n²).  
+*a) True  
+b) False
+
+10. True or False: Binary search can be applied to both sorted and unsorted arrays.  
+a) True  
+*b) False
+
+11. Which of the following are properties of a doubly linked list? (Select all that apply)  
+[*] It allows traversal in both directions  
+[] It requires less memory than a singly linked list  
+[] It has faster access time than an array  
+[*] Each node contains two pointers  
+
+12. In a dynamic array, if the array's current size is 8 and you add the 9th element, the array will _____ in size.  
+* double
+
+13. In a doubly linked list, to delete a node, you must update the _____ and _____ pointers.  
+* previous  
+* next  
+
+14. What is the primary reason why binary search is more efficient than linear search for large datasets?  
+####
+
+15. Which of the following operations can be performed in constant time (O(1)) on a doubly linked list? (Select all that apply)  
+[*] Insertion at the head  
+[*] Deletion at the tail  
+[] Searching for an element  
+[*] Insertion at the tail
+
+16. True or False: The worst-case time complexity of inserting an element at the beginning of a singly linked list is O(1).  
+*a) True  
+b) False
+
+17. What is the time complexity of deleting a node in a singly linked list given a reference to that node?  
+a) O(1)  
+*b) O(n)  
+c) O(log n)  
+d) O(n^2)
+
+18. When a dynamic array needs to resized, it doubles in size, and elements are ______ to the new array.
+* copied
+* Copied
+
+19. True or False: A doubly linked list requires more memory per node than a singly linked list.  
+*a) True  
+b) False  
+
+20. What is the worst-case time complexity of accessing an element in a singly linked list?  
+*a) O(n)  
+b) O(log n)  
+c) O(1)  
+d) O(n log n)
+
+21. How would you implement the deletion of the head node in a doubly linked list?  
+####
+
+22. True or False: A recursive function is always more efficient than its iterative counterpart.  
+a) True  
+*b) False
+
+23. Which of the following are true about recursion? (Select all that apply)  
+[] Recursion always performs faster than iteration  
+[*] Every recursive function must have a base case  
+[*] Recursion can lead to stack overflow if there is no base case  
+[] Recursive functions can only be used for mathematical problems
+
+24. When performing a binary search, how do you calculate the middle index of an array?  
+####
+
+25. Which of the following are correct for the time complexity of linear search? (Select all that apply)  
+[] It is faster than binary search on large datasets  
+[] It has a time complexity of O(log n)  
+[*] It works on both sorted and unsorted arrays  
+[*] The time complexity is O(n)  
+
+26. What is the time complexity of inserting an element at the beginning of a dynamic array?  
+* O(n)
+
+27. What is the advantage of using a doubly linked list over a singly linked list?  
+####
+
+28. True or False: The time complexity of binary search on a sorted array of size n is O(log n).  
+*a) True  
+b) False
+
+29. What is the worst-case time complexity of merge sort, and why does it occur?  
+####
+
+30. What is the base case in a recursive function to compute the Fibonacci sequence?  
+####
+
+31. Which of the following are true for a dynamic array when it grows? (Select all that apply)  
+[*] The array's size doubles  
+[] The array's size is halved when it becomes too large  
+[*] It may require shifting elements to accommodate the new size  
+[] It can only grow to a fixed maximum size  
+
+32. In merge sort, what is the purpose of the "merge" step?  
+####
+
+33. When performing a binary search on an array of size 1024, how many comparisons does it take to find an element?  
+a) 5  
+b) 8  
+*c) 10  
+d) 20
+
+34. True or False: A dynamic array starts empty and grows by doubling in size whenever it is full. If you insert 17 elements, how many total element copies will have been performed?  
+a) 16  
+b) 17  
+c) 18  
+*d) 31  
+
+35. What is the time complexity of nested a for loop with i ranging from 0 to n, with i incremented by 1, and j ranging from i to n, multiplied by 2 each iteration? (O(???))
+* O(n log n)
+* O(nlogn)
+
+36. Which of the following are true about the merge sort algorithm? (Select all that apply)  
+[*] It divides the array into smaller subarrays  
+[*] It has a worst-case time complexity of O(n log n)  
+[] It requires less memory than quicksort  
+[] It is an in-place sorting algorithm
+
+37. In a linked list, how can you find the length of the list without using additional member variables or data structures?  
+####
+
+38. Which of the following are advantages of using recursion over iteration? (Select all that apply)  
+[] Recursion always executes faster than iteration  
+[*] Recursion often leads to cleaner, more elegant solutions  
+[] Recursion is more memory efficient than iteration  
+[*] Recursion can simplify the code for problems that naturally involve subproblems  
+
+39. True or False: A singly linked list allows traversal in both forward and backward directions.  
+a) True  
+*b) False  
+
+40. When would you choose an dynamic array over a linked list for storing data? 
+####
+
+41. Rate this Quiz done by Group #40. Select one option only.
+[*] 1
+[*] 2
+[*] 3
+[*] 4
+[*] 5
+[*] 6
+[*] 7
+[*] 8
+[*] 9
+[*] 10
