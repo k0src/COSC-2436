@@ -18,6 +18,7 @@ private:
 	void DeleteNode(Song* node);
 
 	int length = 0;
+	bool has_favs = false;
 
 	Song* head;
 	Song* tail;
