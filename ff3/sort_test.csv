@@ -1,0 +1,17 @@
+Sorting Algorithm,Sorted Status,Input Size,Execution Time (ms)
+Bubble Sort,Unsorted,10,0.0009 ms
+Bubble Sort,Sorted,10,0.0005 ms
+Merge Sort,Unsorted,10,0.0069 ms
+Merge Sort,Sorted,10,0.0034 ms
+Bubble Sort,Unsorted,100,0.0392 ms
+Bubble Sort,Sorted,100,0.0388 ms
+Merge Sort,Unsorted,100,0.0452 ms
+Merge Sort,Sorted,100,0.053 ms
+Bubble Sort,Unsorted,1000,4.0098 ms
+Bubble Sort,Sorted,1000,4.0105 ms
+Merge Sort,Unsorted,1000,0.3806 ms
+Merge Sort,Sorted,1000,0.3831 ms
+Bubble Sort,Unsorted,10000,451.274 ms
+Bubble Sort,Sorted,10000,448.614 ms
+Merge Sort,Unsorted,10000,4.3206 ms
+Merge Sort,Sorted,10000,4.3399 ms
