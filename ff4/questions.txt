@@ -1,0 +1,15 @@
+Question 1:
+
+Answer for both linked list and array implementation of a stack:
+    a. What is the worst case time complexity of the `push()` function?
+    b. What is the worst case time complexity of the `pop()` function?
+    c. What is the worst case time and space complexity of reversing a stack?
+
+Question 2:
+
+Write a function that takes a string and returns a strinf. This function will remove all adjacent duplicates in a string.
+- Input: "abbaca" Output: "ca"
+
+Question 3:
+
+Write a program to reverse a stack using recursion, without using loops.
