@@ -33,7 +33,7 @@ public:
     }
 
     int front() const {
-        if (isEmpty()) { // Fix undefined behavior
+        if (isEmpty()) {
             throw std::runtime_error("Queue is empty.");
         }
         return array[0];
