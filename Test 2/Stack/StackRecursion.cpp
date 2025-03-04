@@ -36,7 +36,8 @@ void removeTarget(std::stack<int>& st, int target) {
 
 void sortedInsert(std::stack<int>& st, int item) {
 	// Base case
-	if (st.empty() || st.top() <= item) { // If stack is empty, or item is larger than or equal to top, push it
+	// If stack is empty, or item is larger than or equal to top, push it
+	if (st.empty() || st.top() <= item) { 
 		st.push(item);
 		return;
 	}
