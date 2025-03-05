@@ -59,6 +59,17 @@ private:
 
 int main()
 {
-	CircularQueue cq(5);
+	CircularQueue cq(4);
+	cq.enqueue(1);
+	cq.enqueue(2);
+	cq.dequeue();
+	cq.enqueue(4);
+	cq.enqueue(6);
+
+	while (!cq.isEmpty()) {
+		std::cout << cq.peekFront() << std::endl;
+		cq.dequeue();
+	}
+
 	return 0;
 }
