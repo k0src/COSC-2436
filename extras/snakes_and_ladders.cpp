@@ -1,5 +1,2 @@
-// testing
-
 #include <iostream>
-
 
