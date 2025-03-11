@@ -71,7 +71,7 @@ void checkKeyPress() {
             }
         }
         #else
-        // Unix-like systems
+        
         if (kbhit()) {
             char c = getch();
             if (c == 'q') {
