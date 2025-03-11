@@ -241,7 +241,7 @@ private:
                 }
             }
 
-            std::cout << YELLOW << "]" << RESET;
+            std::cout << YELLOW << "] " << RESET;
 
             count++;
         }
