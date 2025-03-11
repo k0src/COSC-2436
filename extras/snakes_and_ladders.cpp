@@ -10,6 +10,14 @@
 #include <atomic>
 #include <limits>
 
+// Colors
+#define RESET "\033[0m"
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+
+// keyboard input stuff
 #ifdef _WIN32
 #include <conio.h>
 #else
@@ -92,7 +100,7 @@ public:
 
         Node* current = start->next;
         
-        while (current) {
+        while (current != end) {
             int random_num = rand() % 100;
             if (random_num < 15) {
                 generate_jump_location(current);
@@ -112,7 +120,7 @@ public:
     
         if (n_players < 1) throw std::invalid_argument("Too little players.");
     
-        std::cout << "Simulating game with " << n_players << " players. Press 'q' to quit." << std::endl;
+        std::cout << "Simulating Snakes and Ladders game with " << n_players << " players. Press 'q' at any time to quit." << std::endl;
         
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::thread keyThread(checkKeyPress);
@@ -124,9 +132,9 @@ public:
         }
     
         while (!quit) {
-            std::cout << "Rolling dice..." << std::endl;
-            
             for (auto& player : players) {
+                std::cout << "Simulating..." << std::endl;
+
                 if (quit) {
                     std::cout << "Quitting..." << std::endl;
                     break;
@@ -147,8 +155,8 @@ public:
                     player->position = jump_locations[new_position];
                 } else if (new_position == board_size) {
                     std::cout << "Player: " << player->player_number << " wins!" << std::endl;
+                    player->position = new_position;
                     quit = true;
-                    printBoard();
                     break;
                 } else if (new_position < board_size) {
                     std::cout << "Player: " << player->player_number << " moves to " << new_position << "!" << std::endl;
@@ -157,10 +165,12 @@ public:
                     std::cout << "Player: " << player->player_number << " stays at " << player->position << "!" << std::endl;
                 }
     
-                std::this_thread::sleep_for(std::chrono::milliseconds(1000 / speed));
                 printBoard();
+                std::this_thread::sleep_for(std::chrono::milliseconds(1000 / speed));
+                clearScreen();
             }
         }
+        printBoard();
         
         keyThread.join();
     }
@@ -209,29 +219,42 @@ private:
         int count = 0;
 
         for (int i = board_size; i > 0; i--) {
-            if (count == rows) {
+            if (count == 10) {
                 std::cout << std::endl;
                 count = 0;
             }
 
-            std::cout << "[" << i;
+            std::cout << YELLOW << "[" << i << RESET;
 
             for (auto& player : players) {
                 if (player->position == i) {
-                    std::cout << " P" << player->player_number;
+                    std::cout << BLUE << " P" << player->player_number << RESET;
                 }
             }
 
             if (jump_locations.count(i) > 0) {
-                std::cout << " " << (i < jump_locations[i] ? "L:" : "S:") << " " << jump_locations[i];
+                std::cout << " ";
+                if (i < jump_locations[i]) {
+                    std::cout << GREEN << "L: " << jump_locations[i] << RESET;
+                } else {
+                    std::cout << RED << "S: " << jump_locations[i] << RESET;
+                }
             }
 
-            std::cout << "]";
+            std::cout << YELLOW << "]" << RESET;
 
             count++;
         }
 
         std::cout << std::endl;
+    }
+
+    void clearScreen() {
+        #ifdef _WIN32
+        system("cls");
+        #else
+        system("clear");
+        #endif
     }
 
     Node* start;
@@ -241,8 +264,6 @@ private:
     std::vector<Player*> players;
 
     const int board_size = 100;
-    const int cols = 10;
-    const int rows = 10;
 };
 
 int main()
