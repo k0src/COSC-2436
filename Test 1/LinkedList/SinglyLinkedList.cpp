@@ -118,6 +118,7 @@ public:
 		} else if (index == _size) {
 			removeBack();
 		} else {
+			Node* current = head;
 			for (int i = 0; i < index - 1; i++) {
 				current = current->next;
 			}
