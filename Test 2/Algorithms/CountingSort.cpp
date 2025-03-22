@@ -18,7 +18,7 @@ void countingSort(std::vector<int>& arr) {
         count_array[i] = count_array[i - 1] + count_array[i];
     }
 
-    for (int i = 0; i < n; i++) {
+    for (int i = n - 1; i >= 0; i--) {
         res[count_array[arr[i]] - 1] = arr[i];
         count_array[arr[i]]--;
     }
