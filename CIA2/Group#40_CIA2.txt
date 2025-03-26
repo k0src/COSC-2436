@@ -1,0 +1,110 @@
+1. True or False: The following function correctly implements the heapify operation for a max heap. https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+a) True
+*b) False
+
+2. True or False: In a stack, the most recently added element is the first one removed.
+*a) True
+b) False
+
+3. This function implements _______ traveral. https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+* preorder
+* Preorder
+
+4. What is the time complexity of Merge Sort in the average case?
+a) O(n)
+b) O(n^2)
+*c) O(n log n)
+d) O(log n)
+
+5. What is the missing line of code in this Shell sort algorithm? https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+* gap/2;
+* gap / 2;
+
+6. In the following quick sort partition function, what is incorrect? https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+a) It does not properly handle pivot placement
+b) The loop condition is incorrect
+*c) The i index should start at low - 1
+d) It does not return an integer
+
+7. Which line is missing from this method to extract the minimum value from a min heap? https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+a) arr[0]++;
+b) arr[0] = arr[min];
+c) arr[size() - 1] = arr[arr.size() - 1];
+*d) arr[0] = arr[arr.size() - 1];
+
+8. ____ sort operates by first rearranging an unsorted array to satisfy a specific order property via a tree-based structure and then repeatedly swapping the first element with the last unsorted element to achieve a sorted list.
+* heap
+* Heap
+
+9. The postfix equivalent of the infix expression (A + B) * C is:
+*a) A B + C *
+b) A B C + *
+c) A + B * C
+d) C A B + *
+
+10. True or False: This function correctly inserts a node at the end of a circular linked list. https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+*a) True
+b) False
+
+11. What is true about the following hash function? https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+[] It ensures uniform key distribution
+[*] It is susceptible to collisions
+[] It guarantees O(1) lookup in all cases
+[*] It works best when size is prime
+
+12. True or False: In hash tables that use open addressing, linear probing resolves collisions without using any additional data structures, such as linked lists.
+*a) True
+b) False
+
+13. The following function inserts an item into a max heap. Which lines are incorrect (if any)? https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+[*] int i = array.size();
+[*] while (array[i] > array[(i - 1) / 2])
+[] std::swap(array[i], array[(i - 1) / 2]);
+[] i = (i - 1) / 2;
+
+14. Given a max heap represented as an array: [45, 32, 30, 15, 20, 25]. Insert the element 35 into the heap. What is the new array representation after restoring the heap property?
+a) [45, 35, 30, 15, 20, 25, 32]
+*b) [45, 32, 35, 15, 20, 25, 30]
+c) [35, 45, 30, 15, 20, 25, 32]
+d) [45, 32, 30, 15, 20, 25, 35]
+
+15. The process of resolving key collisions in a hash table using linked lists is called ____.
+* Chaining
+* chaining
+
+16. Which sorting algorithms have an average time complexity of O(n log n)? (Select all that apply)
+[*] Merge Sort
+[*] Quick Sort
+[*] Heap Sort
+[] Counting Sort
+
+17. The following code snippet shows an implementation of the Quick Sort algorithm. Assuming the partition function is implemented correctly, which lines are incorrect (if any)? https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+[] if (low < high)
+[] int pi = partitionH(arr, low, high);
+[] quickSort(arr, low, pi);
+[*] quickSort(arr, pi, high);
+
+18. Which of the following are true about AVL trees? (Select all that apply)
+[*] They are always height-balanced.
+[*] They may become unbalanced after insertions.
+[*] They require rebalancing operations after insertions and deletions.
+[] They guarantee O(1) time complexity for search.
+
+19. In a postfix expression, the operator follows the _______.
+* operands
+
+20. True or False: This function correctly merges two sorted arrays. https://gist.github.com/k0src/43b813ffde1e576300d0a9f2518eadf4
+a) True
+*b) False
+
+21. Rate this Quiz done by Group #40. Select one option only.
+[*] 1
+[*] 2
+[*] 3
+[*] 4
+[*] 5
+[*] 6
+[*] 7
+[*] 8
+[*] 9
+[*] 10
