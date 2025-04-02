@@ -12,19 +12,19 @@ void bucketSort(std::vector<int>& arr) {
 
     std::vector<std::vector<int>> buckets(n);
 
-    for (int i = 0; i < n; i++) {
-        int index = ((arr[i] - min) / (double) range) * n;
-        buckets[index].push_back(arr[i]);
+    for (int num : arr) {
+        int index = ((num - min) / (double) range) * n;
+        buckets[index].push_back(num);
     }
 
     for (auto& bucket : buckets) {
         std::sort(bucket.begin(), bucket.end());
     }
 
-    int index = 0;
+    int i = 0;
     for (const auto& bucket : buckets) {
         for (int num : bucket) {
-            arr[index++] = num;
+            arr[i++] = num;
         }
     }
 }
