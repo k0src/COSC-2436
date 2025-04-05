@@ -14,241 +14,100 @@ struct Command {
     virtual int getPriority() = 0;
     virtual void setOrder(int order) = 0;
     virtual int getOrder() = 0;
+    virtual std::string getID() = 0;
 };
 
 struct DecodeCommand : Command {
-    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override {
-        message_queue.push(args[0]);
-    }
+    DecodeCommand() : priority(0), order(0) {}
+    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override;
+    void setArgs(std::vector<std::string>& args) override;
+    int getPriority() override;
+    void setPriority(int priority) override;
+    void setOrder(int order) override;
+    int getOrder() override;
+    std::string getID() override;
 
-    void setArgs(std::vector<std::string>& args) override {
-        this->args = args;
-    }
-
-    int getPriority() override {
-        return priority;
-    }
-
-    void setPriority(int priority) override {
-        this->priority = priority;
-    }
-
-    void setOrder(int order) override {
-        this->order = order;
-    }
-
-    int getOrder() override {
-        return order;
-    }
-
+private:
     int priority;
     int order;
     std::vector<std::string> args;
 };
 
-struct ReplaceCommand : Command {    
-    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override { 
-        std::string front = message_queue.front();
-        message_queue.pop();
+struct ReplaceCommand : Command {
+    ReplaceCommand() : priority(0), order(0) {}
+    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override;
+    void setArgs(std::vector<std::string>& args) override;
+    int getPriority() override;
+    void setPriority(int priority) override;
+    void setOrder(int order) override;
+    int getOrder() override;
+    std::string getID() override;
 
-        size_t pos = 0;
-        while ((pos = front.find(args[0], pos)) != std::string::npos) {
-            front.replace(pos, args[0].length(), args[1]);
-            pos += args[1].length();
-        }
-
-        message_queue.push(front);
-    }
-
-    void setArgs(std::vector<std::string>& args) override {
-        this->args = args;
-    }
-
-    int getPriority() override {
-        return priority;
-    }
-
-    void setPriority(int priority) override {
-        this->priority = priority;
-    }
-
-    void setOrder(int order) override {
-        this->order = order;
-    }
-
-    int getOrder() override {
-        return order;
-    }
-
+private:
     int priority;
     int order;
     std::vector<std::string> args;
 };
 
 struct AddCommand : Command {
-    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override {
-        std::string front = message_queue.front();
-        message_queue.pop();
+    AddCommand() : priority(0), order(0) {}
+    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override;
+    void setArgs(std::vector<std::string>& args) override;
+    int getPriority() override;
+    void setPriority(int priority) override;
+    void setOrder(int order) override;
+    int getOrder() override;
+    std::string getID() override;
 
-        size_t pos = 0;
-        while ((pos = front.find(args[0], pos)) != std::string::npos) {
-            pos += args[0].length();
-            front.insert(pos, args[1]);
-            pos += args[1].length();
-        }
-
-        message_queue.push(front);
-    }
-
-    void setArgs(std::vector<std::string>& args) override {
-        this->args = args;
-    }
-
-    int getPriority() override {
-        return priority;
-    }
-
-    void setPriority(int priority) override {
-        this->priority = priority;
-    }
-
-    void setOrder(int order) override {
-        this->order = order;
-    }
-
-    int getOrder() override {
-        return order;
-    }
-
+private:
     int priority;
     int order;
     std::vector<std::string> args;
 };
 
-struct SwapCommand : Command {    
-    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override {
-        if (args[0] == args[1]) return;
-        
-        std::string front = message_queue.front();
-        message_queue.pop();
-        std::string temp = "$$TEMP$$";
+struct SwapCommand : Command {
+    SwapCommand() : priority(0), order(0) {}
+    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override;
+    void setArgs(std::vector<std::string>& args) override;
+    int getPriority() override;
+    void setPriority(int priority) override;
+    void setOrder(int order) override;
+    int getOrder() override;
+    std::string getID() override;
 
-        while (front.find(temp) != std::string::npos) {
-            temp += "$$";
-        }
-
-        size_t pos = 0;
-        while ((pos = front.find(args[0], pos)) != std::string::npos) {
-            front.replace(pos, args[0].length(), temp);
-            pos += temp.length();
-        }
-
-        pos = 0;
-        while ((pos = front.find(args[1], pos)) != std::string::npos) {
-            front.replace(pos, args[1].length(), args[0]);
-            pos += args[0].length();
-        }
-
-        pos = 0;
-        while ((pos = front.find(temp, pos)) != std::string::npos) {
-            front.replace(pos, temp.length(), args[1]);
-            pos += args[1].length();
-        }
-
-        message_queue.push(front);
-    }
-
-    void setArgs(std::vector<std::string>& args) override {
-        this->args = args;
-    }
-
-    int getPriority() override {
-        return priority;
-    }
-
-    void setPriority(int priority) override {
-        this->priority = priority;
-    }
-
-    void setOrder(int order) override {
-        this->order = order;
-    }
-
-    int getOrder() override {
-        return order;
-    }
-
+private:
     int priority;
     int order;
     std::vector<std::string> args;
 };
 
 struct RemoveCommand : Command {
-    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override {        
-        std::string front = message_queue.front();
-        message_queue.pop();
+    RemoveCommand() : priority(0), order(0) {}
+    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override;
+    void setArgs(std::vector<std::string>& args) override;
+    int getPriority() override;
+    void setPriority(int priority) override;
+    void setOrder(int order) override;
+    int getOrder() override;
+    std::string getID() override;
 
-        size_t pos = 0;
-        while ((pos = front.find(args[0], pos)) != std::string::npos) {
-            front.erase(pos, args[0].length());
-        }
-
-        message_queue.push(front);
-    }
-
-    void setArgs(std::vector<std::string>& args) override {
-        this->args = args;
-    }
-
-    int getPriority() override {
-        return priority;
-    }
-
-    void setPriority(int priority) override {
-        this->priority = priority;
-    }
-
-    void setOrder(int order) override {
-        this->order = order;
-    }
-
-    int getOrder() override {
-        return order;
-    }
-
+private:
     int priority;
     int order;
     std::vector<std::string> args;
 };
 
 struct BSTCommand : Command {
-    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override {
-        if (!message_queue.empty()) {
-            bst.insert(message_queue.front());
-            message_queue.pop();
-        }
-    }
+    BSTCommand() : priority(0), order(0) {}
+    void execute(std::queue<std::string>& message_queue, BinarySearchTree& bst) override;
+    void setArgs(std::vector<std::string>& args) override;
+    int getPriority() override;
+    void setPriority(int priority) override;
+    void setOrder(int order) override;
+    int getOrder() override;
+    std::string getID() override;
 
-    void setArgs(std::vector<std::string>& args) override {
-        this->args = args;
-    }
-
-    int getPriority() override {
-        return priority;
-    }
-
-    void setPriority(int priority) override {
-        this->priority = priority;
-    }
-
-    void setOrder(int order) override {
-        this->order = order;
-    }
-
-    int getOrder() override {
-        return order;
-    }
-
+private:
     int priority;
     int order;
     std::vector<std::string> args;

@@ -9,7 +9,7 @@ struct ParsedInput {
     std::string traversal_method;
 };
 
-ParsedInput parseInputFile(std::ifstream& inFile) {
+inline ParsedInput parseInputFile(std::ifstream& inFile) {
     ParsedInput parsed;
     std::string line, prev;
 
