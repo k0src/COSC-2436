@@ -28,8 +28,7 @@ llu maxGCD(llu* arr, llu n) {
             }
         }
     }
-    return 1;
-}
+    return 1;}
 
 int main() {
     llu n;
