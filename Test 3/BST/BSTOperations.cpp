@@ -19,16 +19,16 @@ bool search(TreeNode* root, int target) {
         return true;
 }
 
-TreeNode* insert(TreeNode* root, int data) {
-    if (!root) return new TreeNode(data);
+    TreeNode* insert(TreeNode* root, int data) {
+        if (!root) return new TreeNode(data);
 
-    if (data > root->data) {
-        root->right = insert(root->right, data);
-    } else if (data < root->data) {
-        root->left = insert(root->left, data);
+        if (data > root->data) {
+            root->right = insert(root->right, data);
+        } else if (data < root->data) {
+            root->left = insert(root->left, data);
+        }
+        return root;
     }
-    return root;
-}
 
 int minValue(TreeNode* root) {
     if (!root || !root->left) 
