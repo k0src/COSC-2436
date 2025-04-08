@@ -95,6 +95,16 @@ int getNodeDepth(TreeNode* root, TreeNode* node, int depth = 0) {
     return getNodeDepth(root->right, node, depth + 1);
 }
 
+void clear(TreeNode* root) {
+    if (!root) return;
+
+    if (!root) return;
+    clear(root->left);
+    clear(root->right);
+    delete root;
+    root = nullptr;
+}
+
 int main()
 {
     return 0;
