@@ -30,7 +30,8 @@ bool rayIntersectsCube(double x0, double y0, double z0,
     return tEntry <= tExit && tExit >= 0;
 }
 
-int main() {
+int main() 
+{
     int n;
     cin >> n;
 

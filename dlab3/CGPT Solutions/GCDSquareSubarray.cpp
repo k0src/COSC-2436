@@ -37,7 +37,8 @@ int countGCDSquareSubarrays(std::vector<int>& arr) {
     return count;
 }
 
-int main() {
+int main() 
+{
     int n;
     std::cin >> n;
     std::vector<int> arr(n);
