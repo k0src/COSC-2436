@@ -78,59 +78,51 @@ void Playlist::DeleteSong(std::string title) {
 }
 
 void Playlist::CreateSmartPlaylist(int time_limit, std::ofstream& outFile) {
-    if (!head) return;
-
     Playlist smart_playlist;
     int playlist_time = 0;
 
-    if (has_favs) {
-        int fav_index = -1;
-        auto current = head;
-
-        for (int i = 0; current != nullptr; i++) {
-            if (current->fav_status && playlist_time + current->duration <= time_limit) {
-                smart_playlist.AddSong(current->title, current->duration, current->fav_status);
-                playlist_time += current->duration;
-                fav_index = i;
-            }
-            current = current->next;
-        }
-
-        if (fav_index == -1) {
-            smart_playlist.PrintPlaylist(outFile);
-            return;
-        }
-
-        current = head;
-        for (int i = 0; i < fav_index; i++) {
-            current = current->next;
-        }
-
-        while (current) {
-            if (!current->fav_status && playlist_time + current->duration <= time_limit) {
-                smart_playlist.AddSong(current->title, current->duration, current->fav_status);
-                playlist_time += current->duration;
-            }
-            current = current->prev;
-        }
-
-        current = head;
-        for (int i = 0; i <= fav_index; i++) {
-            current = current->next;
-        }
-
-        while (current) {
-            if (!current->fav_status && playlist_time + current->duration <= time_limit) {
-                smart_playlist.AddSong(current->title, current->duration, current->fav_status);
-                playlist_time += current->duration;
-            }
-            current = current->next;
-        }
+    if (!head) {
+        smart_playlist.PrintPlaylist(outFile);
+        return;
     }
 
+    Song* last_favorite = nullptr;
     auto current = head;
+
     while (current) {
-        if (playlist_time + current->duration <= time_limit) {
+        if (current->fav_status && playlist_time + current->duration <= time_limit) {
+            smart_playlist.AddSong(current->title, current->duration, current->fav_status);
+            playlist_time += current->duration;
+            last_favorite = current;
+        }
+        current = current->next;
+    }
+
+    if (!last_favorite) {
+        current = head;
+        while (current) {
+            if (playlist_time + current->duration <= time_limit) {
+                smart_playlist.AddSong(current->title, current->duration, current->fav_status);
+                playlist_time += current->duration;
+            }
+            current = current->next;
+        }
+        smart_playlist.PrintPlaylist(outFile);
+        return;
+    }
+
+    current = head;
+    while (current != last_favorite) {
+        if (!current->fav_status && playlist_time + current->duration <= time_limit) {
+            smart_playlist.AddSong(current->title, current->duration, current->fav_status);
+            playlist_time += current->duration;
+        }
+        current = current->next;
+    }
+
+    current = last_favorite->next;
+    while (current) {
+        if (!current->fav_status && playlist_time + current->duration <= time_limit) {
             smart_playlist.AddSong(current->title, current->duration, current->fav_status);
             playlist_time += current->duration;
         }
@@ -139,7 +131,6 @@ void Playlist::CreateSmartPlaylist(int time_limit, std::ofstream& outFile) {
 
     smart_playlist.PrintPlaylist(outFile);
 }
-
 
 void Playlist::DeleteNode(Song* node) {
     if (!node) return;
