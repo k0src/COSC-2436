@@ -52,5 +52,5 @@ int main()
         if (i > 0) cout << " ";
         cout << result[i];
     }
-    cout << '\n';
+    return 0;
 }
