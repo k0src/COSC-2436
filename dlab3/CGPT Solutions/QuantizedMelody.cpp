@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include <algorithm>
-#include <iomanip>
 
 int closest_in_scale(int midi_note, const std::vector<int>& scale) {
     int left = 0;
