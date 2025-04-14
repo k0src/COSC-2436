@@ -40,16 +40,22 @@ public:
     }
 
     void addEdge(int i, int j) {
+        if (i < 0 || i >= n_vertices || j < 0 || j >= n_vertices) return;
+
         matrix[i][j] = 1;
         matrix[j][i] = 1;
     }
 
     void removeEdge(int i, int j) {
+        if (i < 0 || i >= n_vertices || j < 0 || j >= n_vertices) return;
+
         matrix[i][j] = 0;
         matrix[j][i] = 0;
     }
 
     bool hasEdge(int i, int j) {
+        if (i < 0 || i >= n_vertices || j < 0 || j >= n_vertices) return;
+        
         return matrix[i][j] == 1;
     }
 

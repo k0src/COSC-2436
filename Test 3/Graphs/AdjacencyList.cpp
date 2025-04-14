@@ -1,10 +1,25 @@
 #include <iostream>
 #include <list>
 #include <unordered_map>
+#include <unordered_set>
+#include <stack>
+#include <queue>
 
 class Graph {
 private:
     std::unordered_map<std::string, std::list<std::string>> adj;
+
+    void DFS(const std::string& root, std::unordered_set<std::string>& visited) {
+        std::cout << root << " ";
+        visited.insert(root);
+
+        for (auto& neighbor : adj.at(root)) {
+            if (!visited.contains(neighbor)) {
+                DFS(neighbor, visited);
+            }
+        }
+    }
+
 public:
     Graph() = default;
 
@@ -54,6 +69,60 @@ public:
             std::cout << std::endl;
         }
     }
+
+    void DFS(const std::string& root) {
+        if (!adj.contains(root)) return;
+         
+        std::unordered_set<std::string> visited;
+        DFS(root, visited);
+    }
+
+    void DFSIterative(const std::string& root) {
+        if (!adj.contains(root)) return;
+
+        std::unordered_set<std::string> visited;
+        std::stack<std::string> stack;
+        stack.push(root);
+
+        while (!stack.empty()) {
+            std::string node = stack.top();
+            stack.pop();
+
+            if (visited.contains(node)) continue;
+
+            std::cout << node << " ";
+            visited.insert(node);
+
+            for (const auto& neighbor : adj.at(node)) {
+                if (!visited.contains(neighbor)) {
+                    stack.push(neighbor);
+                }
+            }
+        }
+    }
+
+    void BFS(const std::string& root) {
+        if (!adj.contains(root)) return;
+
+        std::unordered_set<std::string> visited;
+        std::queue<std::string> queue;
+        queue.push(root);
+        visited.insert(root);
+
+        while (!queue.empty()) {
+            std::string node = queue.front();
+            queue.pop();
+
+            std::cout << node << " ";
+
+            for (const auto& neighbor : adj.at(node)) {
+                if (!visited.contains(neighbor)) {
+                    queue.push(neighbor);
+                    visited.insert(neighbor);
+                }
+            }
+        }
+    }
 };
 
 int main()
@@ -70,17 +139,6 @@ int main()
     g.add_edge("C", "D");
 
     g.print();
-    std::cout << std::endl;
-
-    g.remove_edge("A", "C");
-
-    g.print();
-    std::cout << std::endl;
-
-    g.remove("B");
-
-    g.print();
-    std::cout << std::endl;
 
     return 0;
 }
