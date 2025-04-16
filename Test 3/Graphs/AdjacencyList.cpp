@@ -20,6 +20,35 @@ private:
         }
     }
 
+    void topologicalSort(const std::string& vertex, std::unordered_set<std::string>& visited, std::stack<std::string>& st) {
+        if (visited.contains(vertex)) return;
+
+        visited.insert(vertex);
+
+        for (const auto& neighbor : adj.at(vertex)) {
+            topologicalSort(neighbor, visited, st);
+        }
+
+        st.push(vertex);
+    }
+
+    bool hasCycle(const std::string& vertex, std::unordered_set<std::string>& visited, std::unordered_set<std::string>& rec_stack) {
+        if (rec_stack.contains(vertex)) return true;
+        if (visited.contains(vertex)) return false;
+
+        visited.insert(vertex);
+        rec_stack.insert(vertex);
+
+        for (const auto& neighbor : adj.at(vertex)) {
+            if (hasCycle(neighbor, visited, rec_stack)) {
+                return true;
+            }
+        }
+
+        rec_stack.erase(vertex);
+        return false;
+    }
+
 public:
     Graph() = default;
 
@@ -123,6 +152,76 @@ public:
             }
         }
     }
+
+    std::vector<std::string> topologicalSort() {
+        std::unordered_set<std::string> visited;
+        std::stack <std::string> st;
+
+        for (const auto& [v, _] : adj) {
+            if (!visited.contains(v)) {
+                topologicalSort(v, visited, st);
+            }
+        }
+
+        std::vector<std::string> sorted;
+
+        while (!st.empty()) {
+            sorted.push_back(st.top());
+            st.pop();
+        }
+
+        return sorted;
+    }
+
+    std::vector<std::string> topologicalSortKahn() {
+        std::unordered_map<std::string, int> in_degree;
+        std::queue<std::string> queue;
+        std::vector<std::string> sorted;
+
+        for (const auto& [v, neighbors] : adj) {
+            in_degree[v] = 0;
+        }
+
+        for (const auto& [v, neighbors] : adj) {
+            for (const auto& neighbor : neighbors) {
+                in_degree[neighbor]++;
+            }
+        }
+
+        for (const auto& [v, degree] : in_degree) {
+            if (degree == 0) {
+                queue.push(v);
+            }
+        }
+
+        while (!queue.empty()) {
+            std::string v = queue.front();
+            queue.pop();
+            sorted.push_back(v);
+
+            for (const auto& neighbor : adj.at(v)) {
+                in_degree[neighbor]--;
+                if (in_degree[neighbor] == 0) {
+                    queue.push(neighbor);
+                }
+            }
+        }
+
+        return sorted;
+    }
+
+    bool hasCycle() {
+        std::unordered_set<std::string> visited;
+        std::unordered_set<std::string> rec_stack;
+
+        for (const auto& [v, _] : adj) {
+            if (!visited.contains(v) && hasCycle(v, visited, rec_stack)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 };
 
 int main()
@@ -132,13 +231,17 @@ int main()
     g.add("B");
     g.add("C");
     g.add("D");
+    g.add("E");
+    g.add("F");
 
-    g.add_edge("A", "B");
+    g.add_edge("A", "D");
     g.add_edge("A", "C");
-    g.add_edge("B", "D");
-    g.add_edge("C", "D");
+    g.add_edge("B", "C");
+    g.add_edge("B", "E");
+    g.add_edge("D", "F");
+    g.add_edge("F", "E");
 
-    g.print();
+    std::cout << g.hasCycle();
 
     return 0;
 }
