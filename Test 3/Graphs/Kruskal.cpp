@@ -48,7 +48,7 @@ private:
 };
 
 std::vector<Edge> MST(AdjList& adj, int n_vertices) {
-    DSU dsu(n_vertices);
+    DSU dsu(n_vertices + 1);
     std::vector<Edge> res;
     std::vector<Edge> edge_list;
 
@@ -74,6 +74,8 @@ std::vector<Edge> MST(AdjList& adj, int n_vertices) {
 
 int main() 
 {
+    // Using ints so it fits into the array, the elements are 1 indexed, so when creating DSU do n_vertices + 1
+    // If you want to use strings, you can create a bijection from strings to ints using a map
     AdjList adj;
     adj[1] = { {1, 2, 10}, {1, 3, 1}, {1, 4, 4} };
     adj[2] = { {2, 1, 10}, {2, 5, 0}, {2, 3, 3} };
