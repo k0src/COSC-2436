@@ -6,9 +6,6 @@
 #include <algorithm>
 #include <queue>
 
-// Defintion of weighted undirected adjacency list graph:
-// std::unordered_map<std::string, std::list<std::pair<std::string, int>>>& adj
-
 struct Compare {
     bool operator()(const std::pair<std::string, int>& a,
                     const std::pair<std::string, int>& b) {
