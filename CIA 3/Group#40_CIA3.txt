@@ -1,0 +1,112 @@
+1. Which of the following statements about AVL Trees are true? (Select all that apply.)
+[*] An AVL Tree ensures that the height difference between the left and right subtrees of any node is at most 1.
+[*] After an insertion, at most two rotations are needed to restore the AVL balance property.
+[] A left-left imbalance requires a left rotation to restore balance.
+[*] The worst-case time complexity of inserting a node into an AVL Tree is O(log n).
+
+2. Which option represents the MST of the following graph? (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+a) a
+b) b
+*c) c
+d) d
+
+3. Kruskal's Algorithm uses a _____-find data structure to detect if adding an edge to the current MST will form a _____? (Your answer should be two words separated by one space)
+* Union Cycle
+* union cycle
+
+4. Which of the following are advantages of using an adjacency list over an adjacency matrix for representing a graph? (Select all that apply.)
+[*] Lower space complexity for sparse graphs
+[] Faster lookup of edge existence between two vertices
+[*] More efficient for adding or removing vertices
+[] Better suited for dense graphs
+
+5. Given the Huffman code "101110011000", and the Huffman tree, what is the decoded string? (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+a) losses
+*b) lossless
+c) loose
+d) solo
+
+6. True or False: In a B-tree of order m, every node except the root and leaves must have at least m/2 children.
+*a) True
+b) False
+
+7. Consider the following code for the insertion function for a B-Tree. What line in missing from the method? (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+* insertNonFull
+* insert_non_full
+
+8. When running Kruskal’s algorithm on a weighted undirected graph, what happens if two edges have the same weight and both could be added to the minimum spanning tree without creating a cycle?
+a) The algorithm fails and produces an incorrect MST.
+*b) The algorithm arbitrarily chooses one edge, and the MST remains valid.
+c) Both edges are added, creating a cycle.
+d) The algorithm skips both edges to avoid ambiguity.
+
+9. True or False: The following code snippet shows DEPTH-FIRST traveral implemented for an adjacency matrix. (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+*a) True
+b) False
+
+10. Consider the following code for the insertion function for a Binary Search Tree. What line in missing from the method? (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+* data > root->data
+* data>root->data
+
+11. Which of the following graphs contains an Eulerian Circuit? (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+a) a
+b) b
+*c) c
+d) d
+
+12. True or False: B-Trees are self balancing binary trees characterized by the fact that for every node, the difference in height between its left and right subtrees is never greater than 1.
+a) True
+*b) False
+
+13. In a B-Tree of order 5, when inserting a key into a full node with 4 keys, the node is split into two nodes. The median key is promoted to the parent, and each new node contains ______ keys.
+* 2
+* two
+
+14. True or False: The following code correctly returns the height of a Binary Tree. (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+*a) True
+b) False
+
+15. Which of the following are valid characteristics of a Binary Search Tree?
+[*] The left subtree contains only nodes with keys less than the parent
+[] Duplicates are always allowed in the tree
+[*] An inorder traversal results in sorted order
+[*] The right subtree contains only nodes with keys greater than the parent
+
+16. True or False: The Huffman encoding of the same input string is always unique.
+a) True
+*b) False
+
+17. Which of the following trees represents the AVL Tree after a LL Rotation? (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+a) a
+*b) b
+c) c
+d) d
+
+18. What is the result of Post-Order traveral on the following tree? (Enter answer in the format: 1,2,3,5,...n) (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+* 4,8,5,2,6,9,10,7,3,1
+* 4, 8, 5, 2, 6, 9, 10, 7, 3, 1
+* 4 8 5 2 6 9 10 7 3 1
+
+19. Which of the following algorithms can be used to find a Minimum Spanning Tree?
+[] Dijkstra’s Algorithm
+[] Floyd-Warshall Algorithm
+[*] Prim’s Algorithm
+[*] Kruskal’s Algorithm
+
+20. Which of the following is FALSE about the graph implementation shown here? (https://gist.github.com/k0src/1335fefab4cd3854f7ad050f07cf14a2)
+[] It is implemented as an Adjacency List
+[] It is more efficent for sparse graphs
+[*] It is less space effcient than an Adjacency Matrix 
+[*] Querying an edge is O(n^2) in the worse case
+
+21. Rate this Quiz done by Group #40. Select one option only.
+[*] 1
+[*] 2
+[*] 3
+[*] 4
+[*] 5
+[*] 6
+[*] 7
+[*] 8
+[*] 9
+[*] 10
